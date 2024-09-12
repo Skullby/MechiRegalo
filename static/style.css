@@ -1,0 +1,107 @@
+/* Ensure the hero section takes the full viewport height */
+.hero {
+    height: 100vh;  /* Full viewport height */
+    position: relative;
+    overflow: hidden;  /* Prevents content from overflowing */
+}
+
+/* Carousel settings */
+.hero .carousel-inner {
+    height: 100%;
+}
+
+/* Ensure carousel images take up the full height and width of the hero section */
+.hero .carousel-item img {
+    width: 100%;  /* Make sure the image takes the full width */
+    height: 100vh;  /* Make image take the full height of the hero */
+    object-fit: cover;  /* Ensures the image covers the area without distortion */
+}
+
+/* Add a dark overlay to improve text readability */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);  /* Dark overlay for better text visibility */
+    z-index: 1;
+}
+
+/* Center the text inside the hero and ensure it's above the image */
+.hero .carousel-caption {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+/* Ensure hero section text is responsive */
+.hero .text-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Add a subtle shadow to the text for better readability */
+.hero-title, .hero-subtitle {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Adds a dark shadow to the text */
+}
+
+/* General spacing for the charts */
+#statistics .row > div {
+    margin-bottom: 30px;  /* Adds space between the charts */
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    /* Ensure text takes up more width on smaller screens */
+    .hero .text-container {
+        max-width: 90%;  /* Make the text take up 90% of the screen width */
+    }
+
+    /* Adjust the font size for smaller screens */
+    .hero-title {
+        font-size: 2.5rem;  /* Reduce the font size of the main title */
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;  /* Adjust the font size of the subtitle */
+    }
+
+    /* Stack images vertically on smaller screens (one image per slide) */
+    .carousel-inner .row {
+        flex-wrap: wrap;  /* Stack images vertically */
+    }
+
+    .carousel-inner .col-4 {
+        flex: 0 0 100%;  /* Make each image take up the full width on mobile */
+    }
+
+    .carousel-item img {
+        height: auto;  /* Allow images to adjust their height on smaller screens */
+    }
+
+    #statistics {
+        padding: 20px;  /* Add padding to the statistics section */
+    }
+
+    #statistics h3 {
+        margin-bottom: 20px;  /* Space below section headers */
+    }
+
+    /* Space between the pie charts and line chart */
+    #statistics .col-md-4, #statistics .col-md-6 {
+        margin-bottom: 30px;
+    }
+
+    /* Make the charts a bit smaller to fit better */
+    canvas {
+        max-width: 100%;  /* Ensure charts are responsive */
+        height: auto;  /* Adjust height based on width */
+    }
+}
